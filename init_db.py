@@ -1,14 +1,7 @@
-# init_db.py
+from app.db import engine
+from app.models.users import User
+from app.models.employees import Employee
+from app.db import Base
 
-import sys
-import os
-from app.db.db import engine
-from app.models.employee import Employee
-
-# Add the root directory of your project to the sys.path
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-
-# Create the tables in the database
-Employee.metadata.create_all(bind=engine)
-
-
+# Create all tables
+Base.metadata.create_all(bind=engine)
